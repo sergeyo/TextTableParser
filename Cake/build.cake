@@ -16,6 +16,7 @@ Task("SetVersion")
     .Does(() =>
 {
     var gitVersion = GitVersion(new GitVersionSettings {
+        RepositoryPath = "..",
         UpdateAssemblyInfo = true
     });
     version = gitVersion.NuGetVersion;
