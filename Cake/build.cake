@@ -1,12 +1,15 @@
-﻿#tool "nuget:?package=GitVersion.CommandLine"
+﻿#tool "nuget:?package=NUnit.ConsoleRunner"
+#tool "nuget:?package=GitVersion.CommandLine"
 
 var solution = "../TextTableParser.sln";
 var version = "";
+var packagesPath = "../NugetPackages";
+var apiKey = Argument<string>("ApiKey");
 
 Task("Restore")
     .Does(() =>
 {
-    NugetRestore(solution);
+    NuGetRestore(solution);
 });
 
 Task("SetVersion")
@@ -29,7 +32,7 @@ Task("RunTests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NUnit("../Bin/*.Tests.dll");
+    NUnit3("../Bin/*.Tests.dll");
 });
 
 Task("Pack")
@@ -50,8 +53,27 @@ Task("Pack")
                                      RequireLicenseAcceptance= false,
                                      Symbols                 = false,
                                      NoPackageAnalysis       = true,
-                                     OutputDirectory         = "./NugetPackages"
+                                     OutputDirectory         = packagesPath
                                  };
 
      NuGetPack("../TextTableParser/TextTableParser.csproj", nuGetPackSettings);
 });
+
+Task("Publish")
+    .IsDependentOn("SetVersion")
+    .IsDependentOn("Pack")
+    .Does(() =>
+{
+    foreach (var package in GetFiles(packagesPath + "/*.nupkg")) {
+        Information("Publishing " + package + "...");
+        NuGetPush(package, new NuGetPushSettings {
+            ApiKey = apiKey
+        });
+    }
+});
+
+Task("Default")
+    .IsDependentOn("Publish")
+    .Does(() => {});
+
+RunTarget("Default");

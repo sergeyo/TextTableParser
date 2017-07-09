@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("TextTableParser.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A set of classes for text file to table parsing and to convert text table to DTO of your type")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SergeyO")]
 [assembly: AssemblyProduct("TextTableParser.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
