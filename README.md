@@ -6,9 +6,9 @@
 [nuget-url]: https://www.nuget.org/packages/TextTableParser
 
 
-A set of classes for text files to table parsing and to the text table convert to DTO of your type.
+A set of classes for text files to table parsing and for a text table convertion to DTO of your type.
 
-It has 2 classes: the CSVParser class - to parse text csv/tsv files to Table class, and the ITableToDtoConverter interface, which can convert an object of the Table class to the collection of your Dtos.
+It has 2 main classes: the CSVParser class - to parse text csv/tsv files to Table class, and the ITableToDtoConverter interface, which can convert an object of the Table class to the collection of your Dtos.
 
 <pre>
     var table = new CSVParser(true, '\t', null).CreateFromCsv("file.tsv");
