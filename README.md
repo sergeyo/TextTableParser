@@ -13,7 +13,7 @@ It has 2 main classes: the CSVParser class - to parse text csv/tsv files to Tabl
 <pre>
     var table = new CSVParser(true, '\t', null).CreateFromCsv("file.tsv");
 
-    var converter = new TableToDtoConverterFactory().GetParser<< TestDto >>();
+    var converter = new TableToDtoConverterFactory().GetParser&lt;TestDto&gt;();
 
-    IEnumerable<< TestDto >> dtos = converter.Convert(table);
+    IEnumerable&lt;TestDto&gt; dtos = converter.Convert(table);
 </pre>
