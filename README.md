@@ -1,5 +1,6 @@
 # TextTableParser
 
+[![Build status](https://ci.appveyor.com/api/projects/status/5nlje16xv1ab669l?svg=true)](https://ci.appveyor.com/project/sergeyo/texttableparser)
 [![nuget][nuget-badge]][nuget-url]
 
 [nuget-badge]: https://img.shields.io/badge/nuget-v0.1.0-blue.svg
