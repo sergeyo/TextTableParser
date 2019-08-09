@@ -5,6 +5,7 @@ var solution = "../TextTableParser.sln";
 var version = "";
 var packagesPath = "../NugetPackages";
 var apiKey = Argument<string>("ApiKey");
+var target = Argument<string>("Target", "Default");
 
 Task("Restore")
     .Does(() =>
@@ -78,4 +79,4 @@ Task("Default")
     .IsDependentOn("Publish")
     .Does(() => {});
 
-RunTarget("Default");
+RunTarget(target);
