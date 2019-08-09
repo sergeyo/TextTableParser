@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using TextTableParser.Tests.TestData;
 
@@ -9,6 +10,9 @@ namespace TextTableParser.Tests
     [TestFixture(Category = "Unit")]
     public class TableToDtoConverterTests
     {
+        private const double PI = 3.1415926538;
+        private const float PIf = 3.141592f;
+
         [Test]
         public void Convert_WhenCorrectTableAndDtoTypePassed_ShouldReturnDtos()
         {
@@ -24,7 +28,7 @@ namespace TextTableParser.Tests
                 new [] { "DateTimeNullableParam", "1999-01-01", ""  },
                 new [] { "decimalParam", "-100000", "10000000"  },
                 new [] { "decimalNullableParam", "0", ""  },
-                new [] { "doubleParam", "-3,1415926538", "3,1415926538"  },
+                new [] { "doubleParam", (-PI).ToString(CultureInfo.InvariantCulture), PI.ToString(CultureInfo.InvariantCulture)  },
                 new [] { "doubleNullableParam", "0", ""  },
                 new [] { "shortParam", "-32767", "32767"  },
                 new [] { "shortNullableParam", "0", ""  },
@@ -34,7 +38,7 @@ namespace TextTableParser.Tests
                 new [] { "longNullableParam", "0", ""  },
                 new [] { "sbyteParam", "-127", "127"  },
                 new [] { "sbyteNullableParam", "0", ""  },
-                new [] { "floatParam", "-3,141592", "3,141592"  },
+                new [] { "floatParam", (-PIf).ToString(CultureInfo.InvariantCulture), PIf.ToString(CultureInfo.InvariantCulture)  },
                 new [] { "floatNullableParam", "0", ""  },
                 new [] { "ushortParam", "123", "65535"  },
                 new [] { "ushortNullableParam", "0", ""  },
